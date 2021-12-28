@@ -8,7 +8,6 @@ using Logger = Jotunn.Logger;
 namespace SpawnerCloner.Models {
     public class SpawnerModel {
         [UsedImplicitly] public string OriginalPrefabName;
-        [UsedImplicitly] public string NewSpawnerName;
         [UsedImplicitly] public string HoverText;
         [UsedImplicitly] public float SpawnRadius;
         [UsedImplicitly] public float NearRadius;
@@ -29,8 +28,8 @@ namespace SpawnerCloner.Models {
         [UsedImplicitly] public float SpawnerHealth;
         [UsedImplicitly] public HitData.DamageModifiers DamageModifiers;
 
-        public void RegisterSpawner() {
-            if (NewSpawnerName == null || OriginalPrefabName == null) {
+        public void RegisterSpawner(string newSpawnerName) {
+            if (newSpawnerName == null || OriginalPrefabName == null) {
                 Logger.LogError(
                     $"prefab cloner information is missing a new name or original name, cannot clone spawner");
                 return;
@@ -38,7 +37,7 @@ namespace SpawnerCloner.Models {
 
             // clone the object from existing spawner
             GameObject clonedSpawner = PrefabManager.Instance
-                .CreateClonedPrefab(NewSpawnerName, OriginalPrefabName);
+                .CreateClonedPrefab(newSpawnerName, OriginalPrefabName);
             if (!clonedSpawner.TryGetComponent(out SpawnArea areaSpawner)) {
                 Logger.LogError(
                     $"chosen original prefab '{OriginalPrefabName}' for spawner doesn't have a 'SpawnArea' " +
@@ -116,8 +115,7 @@ namespace SpawnerCloner.Models {
             if (fromGameObject != null && destructible != null && spawnArea != null)
                 return new SpawnerModel() {
                     OriginalPrefabName = fromGameObject.name,
-                    NewSpawnerName = null,
-                    HoverText = fromGameObject.TryGetComponent(out HoverText hoverText) ? hoverText.m_text : "",
+                    HoverText = fromGameObject.TryGetComponent(out HoverText hoverText) ? hoverText.m_text : null,
                     Spawns = spawnArea.m_prefabs
                         .Where(prefab => prefab != null)
                         .Select(SpawnDataModel.FromSpawnData)

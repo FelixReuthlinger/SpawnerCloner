@@ -30,26 +30,23 @@ namespace SpawnerCloner {
                 .Build();
 
             List<Dictionary<string, SpawnerModel>> configs = new(configPaths.Count);
-
-            foreach (var file in configPaths) {
-                configs.Add(ReadFromFile(file, deserializer));
-            }
+            configs.AddRange(configPaths.Select(file => ReadFromFile(file, deserializer)));
 
             var allConfigs = configs.Aggregate((a, b) =>
                 a.Concat(b).ToDictionary(kv => kv.Key, kv => kv.Value));
 
             foreach (KeyValuePair<string, SpawnerModel> keyValuePair in allConfigs) {
-                keyValuePair.Value.RegisterSpawner();
+                keyValuePair.Value.RegisterSpawner(keyValuePair.Key);
             }
         }
 
         private static Dictionary<string, SpawnerModel> ReadFromFile(string file, IDeserializer deserializer) {
             try {
-                string yamlContent = File.ReadAllText(file);
+                var yamlContent = File.ReadAllText(file);
                 return deserializer.Deserialize<Dictionary<string, SpawnerModel>>(yamlContent);
             }
             catch (Exception e) {
-                Jotunn.Logger.LogWarning($"Unable to parse config file '{file}' due to {e.Message}");
+                Logger.LogWarning($"Unable to parse config file '{file}' due to {e.Message}");
             }
 
             return new Dictionary<string, SpawnerModel>();
