@@ -33,8 +33,7 @@ name: ```org.bepinex.plugins.spawner.cloner.defaults.yaml```
 ```yaml
 Spawner_GreydwarfNest:
   originalPrefabName: Spawner_GreydwarfNest
-  newSpawnerName: ''
-  newSpawnerHoverText: ''
+  hoverText: $enemy_greydwarfspawner
   spawnRadius: 4
   nearRadius: 20
   farRadius: 1000
@@ -87,22 +86,18 @@ org.bepinex.plugins.spawner.cloner.custom.*.yaml
 
 #### Config explained
 
-On top most level you can separate multiple entries inside one file with any custom name you like (only used in config
-file, will not affect the spawner name in game).
-
-For example:
+On top most level you can separate multiple entries inside one file with any custom name you like.
 
 ```yaml
-MyFunkyGrewDrunkenSpawner:
+Drunken_Greydwarfs_Nest:
   originalPrefabName: Spawner_GreydwarfNest
-  newSpawnerName: Drunken_Greydwarfs_Nest
-...
+  hoverText: 'The drunken bastards strolling around the forest'
 ```
 
-* 'MyFunkyGrewDrunkenSpawner' is any arbitrary value that helps you to identify your spawners.
 * 'Spawner_GreydwarfNest' is the original prefab from game that will be used as a base for cloning
 * 'Drunken_Greydwarfs_Nest' is the new name that you can use with any other mod
   like [SpawnThat](https://valheim.thunderstore.io/package/ASharpPen/Spawn_That/) to make it spawn in game.
+* Note for 'hoverText' field: if you want to use more 1 word, you will need to put the text phrase into ''
 
 This section will contain a list of creature that this spawner will emit.
 ```yaml
@@ -145,9 +140,14 @@ The game does use these values to identify how resistant the spawner will be aga
 
 * use own (custom) prefabs, can only use Spawners that are already properly added to the game
 * server sync (maybe later, feel free to help ;) )
+* localization
 
 ## Changelog
 
+* 0.2.1 now also uploaded the correct readme version
+* 0.2.0 smaller changes, but breaking config file field names and usage
+  * renamed 'newSpawnerHoverText' field into 'hoverText' and doing export for this field also properly
+  * replaced 'newSpawnerName' field by using the separating identifier as new prefab name 
 * 0.1.0 -> initial version
 
 ## Contact

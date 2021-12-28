@@ -107,7 +107,6 @@
     <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="Package\README.md" />
-    <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Package\plugins\" />

@@ -1,7 +1,7 @@
 ﻿{
   "name": "SpawnerCloner",
   "description": "A mod to simply clone and configure existing Spawner objects like the Greydwarf nest.",
-  "version_number": "0.2.0",
+  "version_number": "0.2.1",
   "website_url": "https://github.com/FelixReuthlinger/SpawnerCloner",
   "dependencies": [
     "ValheimModding-Jotunn-2.4.5",
