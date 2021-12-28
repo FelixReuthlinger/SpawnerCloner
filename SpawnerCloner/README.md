@@ -144,6 +144,7 @@ The game does use these values to identify how resistant the spawner will be aga
 
 ## Changelog
 
+* 0.2.1 now also uploaded the correct readme version
 * 0.2.0 smaller changes, but breaking config file field names and usage
   * renamed 'newSpawnerHoverText' field into 'hoverText' and doing export for this field also properly
   * replaced 'newSpawnerName' field by using the separating identifier as new prefab name 
