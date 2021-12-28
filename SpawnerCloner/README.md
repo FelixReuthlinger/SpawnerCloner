@@ -91,11 +91,13 @@ On top most level you can separate multiple entries inside one file with any cus
 ```yaml
 Drunken_Greydwarfs_Nest:
   originalPrefabName: Spawner_GreydwarfNest
+  hoverText: 'The drunken bastards strolling around the forest'
 ```
 
 * 'Spawner_GreydwarfNest' is the original prefab from game that will be used as a base for cloning
 * 'Drunken_Greydwarfs_Nest' is the new name that you can use with any other mod
   like [SpawnThat](https://valheim.thunderstore.io/package/ASharpPen/Spawn_That/) to make it spawn in game.
+* Note for 'hoverText' field: if you want to use more 1 word, you will need to put the text phrase into ''
 
 This section will contain a list of creature that this spawner will emit.
 ```yaml
