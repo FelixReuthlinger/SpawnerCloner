@@ -34,7 +34,7 @@ name: ```org.bepinex.plugins.spawner.cloner.defaults.yaml```
 Spawner_GreydwarfNest:
   originalPrefabName: Spawner_GreydwarfNest
   newSpawnerName: ''
-  newSpawnerHoverText: ''
+  HoverText: ''
   spawnRadius: 4
   nearRadius: 20
   farRadius: 1000
@@ -145,9 +145,12 @@ The game does use these values to identify how resistant the spawner will be aga
 
 * use own (custom) prefabs, can only use Spawners that are already properly added to the game
 * server sync (maybe later, feel free to help ;) )
+* localization
 
 ## Changelog
 
+* 0.2.0
+  * Renamed 'NewSpawnerHoverText' into 'HoverText' and doing export for this field also properly
 * 0.1.0 -> initial version
 
 ## Contact
